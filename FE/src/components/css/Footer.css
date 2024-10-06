@@ -1,0 +1,81 @@
+.ft-logo img {
+  width: 90%;
+  background-position: center;
+}
+
+.info-made > h4 {
+  padding: 15px 0px;
+  float: left;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 20px;
+  width: max-content;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.info-made .info-ft-ct {
+  font-size: 15px;
+  color: #fff;
+  margin: 15px 0;
+}
+
+.border-right {
+  border-right: 1px solid #007bff;
+}
+
+.ft-right {
+  flex: 0 auto;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+
+.gioithieu h4 {
+  color: #fff;
+}
+
+.gioithieu .list-thongtin li {
+  list-style: none;
+  padding: 7px 3px;
+}
+
+.gioithieu .list-thongtin a {
+  color: #f1e7e7a2;
+  font-size: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.gioithieu .list-thongtin a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: transparent;
+  transition: width 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.gioithieu .list-thongtin a:hover::after {
+  background-color: #007bff;
+  width: 100%;
+  transform: scaleX(1);
+}
+
+.gioithieu .list-thongtin a:hover {
+  color: #007bff;
+}
+
+.list-thongtin li img {
+  width: 50%;
+}
+
+.coppyright {
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  border-top: 1px solid #007bff;
+}

@@ -3,43 +3,48 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\User\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use App\Enums\User\UserRole;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'fullname',
+        'gender',
         'email',
+        'phone',
+        'address',
+        'token',
         'password',
+        'roles',
+        'avatar'
     ];
+    
+    public function hasRole($role)
+    {
+        return $this->roles === $role;
+    }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function scopeGetUser($query){
+        return $query->where('roles',UserRole::User)->orderBy('id','desc')->get();
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    public function scopeGetAdmin($query){
+        return $query->where('roles',UserRole::Admin)
+                    ->orderBy('id','desc')->get();
+    }
+    
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'status' => UserStatus::class,
     ];
 }
